@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
-import { ExternalLink, Github } from 'lucide-react';
+import { ExternalLink, Eye } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const Projects = () => {
   const projects = [
@@ -9,8 +10,7 @@ const Projects = () => {
       description: "Una piattaforma e-commerce completa sviluppata con React e Node.js. Include gestione prodotti, carrello, pagamenti e dashboard admin.",
       image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&h=400&fit=crop",
       technologies: ["React", "TypeScript", "Node.js", "PostgreSQL", "Stripe"],
-      github: "https://github.com/marioesposito2003/ecommerce-platform",
-      demo: "https://ecommerce-demo.vercel.app",
+      slug: "ecommerce-platform",
       featured: true
     },
     {
@@ -19,8 +19,7 @@ const Projects = () => {
       description: "Applicazione per la gestione delle attività con funzionalità di collaborazione in tempo reale e notifiche push.",
       image: "https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=600&h=400&fit=crop",
       technologies: ["Next.js", "Socket.io", "MongoDB", "TailwindCSS"],
-      github: "https://github.com/marioesposito2003/task-manager",
-      demo: "https://task-manager-demo.vercel.app",
+      slug: "task-manager",
       featured: true
     },
     {
@@ -29,8 +28,7 @@ const Projects = () => {
       description: "Dashboard meteorologica con grafici interattivi e previsioni dettagliate. Utilizza APIs esterne per dati in tempo reale.",
       image: "https://images.unsplash.com/photo-1504608524841-42fe6f032b4b?w=600&h=400&fit=crop",
       technologies: ["Vue.js", "Chart.js", "OpenWeather API", "Vuetify"],
-      github: "https://github.com/marioesposito2003/weather-dashboard",
-      demo: "https://weather-dashboard-demo.vercel.app",
+      slug: "weather-dashboard",
       featured: false
     },
     {
@@ -39,8 +37,7 @@ const Projects = () => {
       description: "Tool di analisi per social media con dashboard personalizzabili e report automatici. Integrazione con multiple piattaforme.",
       image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=400&fit=crop",
       technologies: ["React", "Python", "FastAPI", "Redis", "Docker"],
-      github: "https://github.com/marioesposito2003/social-analytics",
-      demo: "https://social-analytics-demo.vercel.app",
+      slug: "social-analytics",
       featured: true
     },
     {
@@ -49,8 +46,7 @@ const Projects = () => {
       description: "Questo stesso portfolio! Sviluppato con React, Framer Motion e TailwindCSS per una UX moderna e fluida.",
       image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&h=400&fit=crop",
       technologies: ["React", "TypeScript", "Framer Motion", "TailwindCSS"],
-      github: "https://github.com/marioesposito2003/portfolio",
-      demo: "https://marioesposito2003.github.io",
+      slug: "portfolio",
       featured: false
     },
     {
@@ -59,8 +55,7 @@ const Projects = () => {
       description: "Assistente conversazionale AI con interfaccia moderna. Supporta multiple lingue e context-aware responses.",
       image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=600&h=400&fit=crop",
       technologies: ["React", "OpenAI API", "Express.js", "WebSockets"],
-      github: "https://github.com/marioesposito2003/ai-chat",
-      demo: "https://ai-chat-demo.vercel.app",
+      slug: "ai-chat",
       featured: true
     }
   ];
@@ -127,24 +122,13 @@ const Projects = () => {
                 </div>
                 
                 <div className="flex space-x-4">
-                  <a
-                    href={project.github}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center space-x-2 px-4 py-2 bg-gray-900 text-white rounded-lg hover:bg-gray-800 transition-colors duration-300"
-                  >
-                    <Github className="w-4 h-4" />
-                    <span>Codice</span>
-                  </a>
-                  <a
-                    href={project.demo}
-                    target="_blank"
-                    rel="noopener noreferrer"
+                  <Link
+                    to={`/project/${project.slug}`}
                     className="inline-flex items-center space-x-2 px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors duration-300"
                   >
-                    <ExternalLink className="w-4 h-4" />
-                    <span>Demo</span>
-                  </a>
+                    <Eye className="w-4 h-4" />
+                    <span>Dettagli</span>
+                  </Link>
                 </div>
               </div>
             </motion.div>
@@ -193,22 +177,12 @@ const Projects = () => {
               </div>
               
               <div className="flex space-x-3">
-                <a
-                  href={project.github}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-gray-600 hover:text-gray-900 transition-colors duration-300"
-                >
-                  <Github className="w-5 h-5" />
-                </a>
-                <a
-                  href={project.demo}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                <Link
+                  to={`/project/${project.slug}`}
                   className="text-purple-600 hover:text-purple-700 transition-colors duration-300"
                 >
-                  <ExternalLink className="w-5 h-5" />
-                </a>
+                  <Eye className="w-5 h-5" />
+                </Link>
               </div>
             </motion.div>
           ))}
